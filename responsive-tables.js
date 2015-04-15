@@ -2,17 +2,24 @@
 
   $(document).ready(function() {
     var responsiveBoundary = 767;
-
     var switched = false;
+
     var updateTables = function() {
-      if (($(window).width() < responsiveBoundary) && !switched ){
+
+      var scrollBarWidth = 0;
+
+      if ( !(window.mozInnerScreenX == null) ) {
+        scrollBarWidth = window.innerWidth - $("body").width();
+      }
+
+      if ( ($(window).width() < responsiveBoundary - scrollBarWidth && !switched )
         switched = true;
         $("table.responsive").each(function(i, element) {
           splitTable($(element));
         });
         return true;
       }
-      else if (switched && ($(window).width() > responsiveBoundary)) {
+      else if ( switched && ($(window).width() > responsiveBoundary - scrollBarWidth) ) {
         switched = false;
         $("table.responsive").each(function(i, element) {
           unsplitTable($(element));
