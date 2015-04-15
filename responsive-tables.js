@@ -37,15 +37,15 @@
 
     function splitTable(original)
     {
-      original.wrap("<div class='table-wrapper' />");
+      original.wrap("<div class='table-wrapper'>");
 
       var copy = original.clone();
       copy.find("td:not(:first-child), th:not(:first-child)").css("display", "none");
       copy.removeClass("responsive");
 
       original.closest(".table-wrapper").append(copy);
-      copy.wrap("<div class='pinned' />");
-      original.wrap("<div class='scrollable' />");
+      copy.wrap("<div class='pinned'>");
+      original.wrap("<div class='scrollable'>");
 
       setCellHeights(original, copy);
       setTableHeights(original, copy);
@@ -62,8 +62,8 @@
         oheight = $(this).height();
         cheight = $('tr:eq('+index+')', copy).height();
         height = (oheight > cheight ? oheight : cheight);
-        $('td', original).css('height', height+'px');
-        $('td', copy).css('height', height+'px');
+        $('tr:eq('+index+') td', original).css('height', height+'px');
+        $('tr:eq('+index+') td', copy).css('height', height+'px');
       });
     }
 
