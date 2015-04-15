@@ -8,15 +8,16 @@
 
       var scrollBarWidth = 0;
 
-      if ( !(window.mozInnerScreenX == null) ) {
+      if ( !(window.mozInnerScreenX === null) ) {
         scrollBarWidth = window.innerWidth - $("body").width();
       }
 
-      if ( ($(window).width() < responsiveBoundary - scrollBarWidth && !switched )
+      if ( $(window).width() < responsiveBoundary - scrollBarWidth && !switched ) {
         switched = true;
         $("table.responsive").each(function(i, element) {
           splitTable($(element));
         });
+
         return true;
       }
       else if ( switched && ($(window).width() > responsiveBoundary - scrollBarWidth) ) {
