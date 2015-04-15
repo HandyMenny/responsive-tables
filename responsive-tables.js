@@ -1,16 +1,18 @@
 (function($) {
 
   $(document).ready(function() {
+    var responsiveBoundary = 767;
+
     var switched = false;
     var updateTables = function() {
-      if (($(window).width() < 767) && !switched ){
+      if (($(window).width() < responsiveBoundary) && !switched ){
         switched = true;
         $("table.responsive").each(function(i, element) {
           splitTable($(element));
         });
         return true;
       }
-      else if (switched && ($(window).width() > 767)) {
+      else if (switched && ($(window).width() > responsiveBoundary)) {
         switched = false;
         $("table.responsive").each(function(i, element) {
           unsplitTable($(element));
