@@ -16,6 +16,8 @@
           unsplitTable($(element));
         });
       }
+
+      $(window).trigger('responsiveTables:postDraw');
     };
 
     $(window).load(updateTables);
