@@ -62,17 +62,17 @@
         oheight = $(this).height();
         cheight = $('tr:eq('+index+')', copy).height();
         height = (oheight > cheight ? oheight : cheight);
-        $('th,td', original).css('height', height+'px');
-        $('th,td', copy).css('height', height+'px');
+        $('td', original).css('height', height+'px');
+        $('td', copy).css('height', height+'px');
       });
     }
 
     function setTableHeights(original, copy) {
-        oheight = original.outerHeight();
-        cheight = copy.outerHeight();
-        height = (oheight > cheight ? oheight : cheight);
-        original.css('min-height', height+'px');
-        copy.css('min-height', height+'px');
+      oheight = original.outerHeight();
+      cheight = copy.outerHeight();
+      height = (oheight > cheight ? oheight : cheight);
+      original.css('min-height', height+'px');
+      copy.css('min-height', height+'px');
     }
 
   });
