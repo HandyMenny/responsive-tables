@@ -1,18 +1,12 @@
 (function($) {
 
   $(document).ready(function() {
-    var responsiveBoundary = 767;
+    var responsiveBoundary = 768;
     var switched = false;
 
     var updateTables = function() {
 
-      var scrollBarWidth = 0;
-
-      if ( !(window.mozInnerScreenX === null) ) {
-        scrollBarWidth = window.innerWidth - $("body").width();
-      }
-
-      if ( $(window).width() < responsiveBoundary - scrollBarWidth && !switched ) {
+      if (window.matchMedia("(max-width:" + responsiveBoundary + "px)").matches && !switched ) {
         switched = true;
         $("table.responsive").each(function(i, element) {
           splitTable($(element));
@@ -20,7 +14,7 @@
 
         return true;
       }
-      else if ( switched && ($(window).width() > responsiveBoundary - scrollBarWidth) ) {
+      if (switched && window.matchMedia("(min-width:" + (responsiveBoundary-0.02) + "px)").matches) {
         switched = false;
         $("table.responsive").each(function(i, element) {
           unsplitTable($(element));
